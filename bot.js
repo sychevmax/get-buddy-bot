@@ -110,7 +110,7 @@ bot.on("message", async (ctx) => {
       return;
     }
 
-    const user = (`${ctx.message.from.first_name || ""} ${ctx.message.from.last_name || ""} @${ctx.message.from.username}`);
+    const user = (`${ctx.message.from.first_name || ""} ${ctx.message.from.last_name || ""} @${ctx.message.from.username}`).replace("_", "\\_");
 
     ctx.telegram.sendMessage(settings.destinationChat, `Запрос на взаимную проработку от ${user}\n\n${ctx.message.text}`, testMenu);
     ctx.reply(messages.respondMessage);
