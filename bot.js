@@ -9,7 +9,7 @@ const settings = {};
 const initialize = () => {
     
     settings.admins = process.env.admins.split(",");    
-    settings.takeButtonName = process.env.TAKE_BUTTON_NAME || "Принять";
+    settings.takeButtonName = process.env.TAKE_BUTTON_NAME || "Принять запрос";
     settings.gaId = process.env.GA_ID;
     settings.sendMessagePeriod = 300000;
     settings.sendMessagePeriodMinutes = settings.sendMessagePeriod / 60000;
