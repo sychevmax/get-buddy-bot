@@ -9,7 +9,7 @@ const settings = {};
 const initialize = () => {
     
     settings.admins = process.env.admins.split(",");    
-    settings.takeButtonName = process.env.TAKE_BUTTON_NAME || "Беру";
+    settings.takeButtonName = process.env.TAKE_BUTTON_NAME || "Принять";
     settings.gaId = process.env.GA_ID;
     settings.sendMessagePeriod = 300000;
     settings.sendMessagePeriodMinutes = settings.sendMessagePeriod / 60000;
@@ -19,7 +19,7 @@ const initialize = () => {
 initialize();
 
 const messages = {
-  welcomeMessage: "Привет! Я бот. Помогаю найти партнера для взаимных проработки на дипломном проекте «Практический психолог» Антона Антонова.\n\nЧтобы найти партнера просто отправь сообщение с пожеланиями по времени.\nНапример, «понедельник с 12:00 до 15:00 МСК».\n\nЯ перешлю твое сообщение в чат диплома и найду для тебя партнера. Он свяжется с тобой в личных сообщениях.",
+  welcomeMessage: "Привет! Я бот. Помогаю найти бадди на дипломном проекте «Практический психолог» Антона Антонова.\n\nЧтобы найти партнера на прохождение дипломной программы просто отправь сообщение с небольшой информацией о себе.\n\nЯ перешлю твое сообщение в чат диплома и найду для тебя бадди. Он свяжется с тобой в личных сообщениях.",
   errorMessage: "Что-то пошло не так. Попробуйте еще раз. Если не получится, напишите в поддержку @@aantonovsupportbot, разберемся.",
   setNickNameMessage: "Чтобы использовать этого бота, установите имя пользователя в телеграм и отправьте запрос заново. Инструкция как это сделать: https://youtu.be/muxNQ4HmTyE",
   notChatMemberMessage: "Вы должны состоять в чате диплома, чтобы использовать этот бот. Ссылка на чат в нулевом модуле с организационной информацией на платформе геткурс https://study.antonantonov.com/",
