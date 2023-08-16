@@ -112,7 +112,7 @@ bot.on("message", async (ctx) => {
 
     const user = (`${ctx.message.from.first_name || ""} ${ctx.message.from.last_name || ""} @${ctx.message.from.username}`).split("_").join("\\_");
 
-    ctx.telegram.sendMessage(settings.destinationChat, `${user} ищет бадди:\n\n${ctx.message.text}`, testMenu);
+    ctx.telegram.sendMessage(settings.destinationChat, `Запрос на взаимную проработку от ${user}\n\n${ctx.message.text}`, testMenu);
     ctx.reply(messages.respondMessage);
     setLastMessageTime(ctx.message.from.username);
 });
