@@ -25,9 +25,9 @@ const initialize = () => {
     settings.sendMessagePeriodMinutes = settings.sendMessagePeriod / 60000;
     settings.destinationChat = process.env.DESTINATION_CHAT;
 
-    messages.welcomeMessage = settings.welcomeMessage || messages.welcomeMessage;
-    messages.notChatMemberMessage = settings.notChatMemberMessage || messages.notChatMemberMessage;
-    messages.respondMessage = settings.respondMessage || messages.respondMessage;
+    messages.welcomeMessage = process.env.welcomeMessage || messages.welcomeMessage;
+    messages.notChatMemberMessage = process.env.notChatMemberMessage || messages.notChatMemberMessage;
+    messages.respondMessage = process.env.respondMessage || messages.respondMessage;
 }
 
 initialize();
