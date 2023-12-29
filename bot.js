@@ -12,8 +12,7 @@ const messages = {
   errorMessage: "Что-то пошло не так. Попробуйте еще раз. Если не получится, напишите в поддержку @@antonantonov_videobot, разберемся.",
   setNickNameMessage: "Чтобы использовать этого бота, установите имя пользователя в телеграм и отправьте запрос заново. Инструкция как это сделать: https://youtu.be/muxNQ4HmTyE",
   notChatMemberMessage: "Вы должны состоять в чате диплома, чтобы использовать этот бот. Ссылка на чат в нулевом модуле с организационной информацией на платформе геткурс https://study.antonantonov.com/",
-  respondMessage: "Ваша заявка отправлена в чат диплома. Партнер свяжется с вами в личных сообщениях.",
-  tooFastMessage: `Можно отправлять не больше 1 запроса в ${settings.sendMessagePeriodMinutes} минут. Повторите попытку чуть позже`,
+  respondMessage: "Ваша заявка отправлена в чат диплома. Партнер свяжется с вами в личных сообщениях."
 };
 
 const initialize = () => {
@@ -28,6 +27,7 @@ const initialize = () => {
     messages.welcomeMessage = process.env.welcomeMessage || messages.welcomeMessage;
     messages.notChatMemberMessage = process.env.notChatMemberMessage || messages.notChatMemberMessage;
     messages.respondMessage = process.env.respondMessage || messages.respondMessage;
+    messages.tooFastMessage=`Можно отправлять не больше 1 запроса в ${settings.sendMessagePeriodMinutes} минут. Повторите попытку чуть позже`;
 }
 
 initialize();
