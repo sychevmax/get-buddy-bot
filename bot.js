@@ -6,17 +6,6 @@ dotenv.config();
 
 const separator = "";
 const settings = {};
-const initialize = () => {
-    
-    settings.admins = process.env.admins.split(",");    
-    settings.takeButtonName = process.env.TAKE_BUTTON_NAME || "Принять запрос";
-    settings.gaId = process.env.GA_ID;
-    settings.sendMessagePeriod = 300000;
-    settings.sendMessagePeriodMinutes = settings.sendMessagePeriod / 60000;
-    settings.destinationChat = process.env.DESTINATION_CHAT;
-}
-
-initialize();
 
 const messages = {
   welcomeMessage: "Привет! Я бот. Помогаю найти партнера для взаимных проработки на дипломном проекте «Практический психолог» Антона Антонова.\n\nЧтобы найти партнера просто отправь сообщение с пожеланиями по времени.\nНапример, «понедельник с 12:00 до 15:00 МСК».\n\nЯ перешлю твое сообщение в чат диплома и найду для тебя партнера. Он свяжется с тобой в личных сообщениях.",
@@ -26,6 +15,22 @@ const messages = {
   respondMessage: "Ваша заявка отправлена в чат диплома. Партнер свяжется с вами в личных сообщениях.",
   tooFastMessage: `Можно отправлять не больше 1 запроса в ${settings.sendMessagePeriodMinutes} минут. Повторите попытку чуть позже`,
 };
+
+const initialize = () => {
+    
+    settings.admins = process.env.admins.split(",");    
+    settings.takeButtonName = process.env.TAKE_BUTTON_NAME || "Принять запрос";
+    settings.gaId = process.env.GA_ID;
+    settings.sendMessagePeriod = 300000;
+    settings.sendMessagePeriodMinutes = settings.sendMessagePeriod / 60000;
+    settings.destinationChat = process.env.DESTINATION_CHAT;
+
+    messages.welcomeMessage = settings.welcomeMessage || messages.welcomeMessage;
+    messages.notChatMemberMessage = settings.notChatMemberMessage || messages.notChatMemberMessage;
+    messages.respondMessage = settings.respondMessage || messages.respondMessage;
+}
+
+initialize();
 
 const bot = new Telegraf(process.env.botToken);
 
