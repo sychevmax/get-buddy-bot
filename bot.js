@@ -23,6 +23,7 @@ const initialize = () => {
     settings.sendMessagePeriod = 300000;
     settings.sendMessagePeriodMinutes = settings.sendMessagePeriod / 60000;
     settings.destinationChat = process.env.DESTINATION_CHAT;
+    settings.isBuddyMode = process.env.IS_BUDDY_MODE || false;
 
     messages.welcomeMessage = process.env.welcomeMessage || messages.welcomeMessage;
     messages.notChatMemberMessage = process.env.notChatMemberMessage || messages.notChatMemberMessage;
@@ -117,7 +118,12 @@ bot.on("message", async (ctx) => {
 
     const user = (`${ctx.message.from.first_name || ""} ${ctx.message.from.last_name || ""} @${ctx.message.from.username}`).split("_").join("\\_");
 
-    ctx.telegram.sendMessage(settings.destinationChat, `Запрос на взаимную проработку от ${user}\n\n${ctx.message.text}`, testMenu);
+    if(settings.isBuddyMode){
+      ctx.telegram.sendMessage(settings.destinationChat, `${user} ищет бадди:\n\n${ctx.message.text}`, testMenu);
+    } else {
+      ctx.telegram.sendMessage(settings.destinationChat, `Запрос на взаимную проработку от ${user}\n\n${ctx.message.text}`, testMenu);
+    }
+    
     ctx.reply(messages.respondMessage);
     setLastMessageTime(ctx.message.from.username);
 });
